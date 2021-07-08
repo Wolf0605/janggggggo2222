@@ -4,12 +4,15 @@
 
     <div style = 'margin: 2rem; text-align: center'>
         <h1>METHOD</h1>
-        <form action="/account/hello_world" method="past">
+        <form action="/account/hello_world/" method="post">
             {% csrf_token %}
-            <input type="submit" class="btn btn-light rounded-pill px-5" type="submit" >
+            <input type="text" name="hello_world_input">
+            <input type="submit" class="btn btn-light rounded-pill px-5" type="submit" > {# submit 은 제출한다는 형식의 trigger #}
         </form>
-        <h3>{{  text }}</h3> {# get method 불러옴 #}
 
+        {% if hello_world_output %} {# 만약 hello_world_output 이 있으면 #}
+        <h3>{{ hello_world_output }}</h3> {# get method 불러옴 #}
+        {% endif %} {# endif 로 막아줘야됨 #}
     </div>
 
 {%  endblock %}
