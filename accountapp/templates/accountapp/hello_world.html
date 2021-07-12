@@ -3,15 +3,26 @@
 {%  block content %}
 
     <div style = 'margin: 2rem; text-align: center'>
-        <h1>METHOD</h1>
+        <h1 style="font-family:  'Pacifico', cursive"
+            class="m-5">
+            hello world list
+        </h1>
+
         <form action="/account/hello_world/" method="post">
             {% csrf_token %}
-            <input type="text" name="hello_world_input">
-            <input type="submit" class="btn btn-light rounded-pill px-5" type="submit" > {# submit 은 제출한다는 형식의 trigger #}
+            <div class="input-group wb-3 w-50 m-auto">
+                <input type="text" class="form-control"
+                       name="hello_world_input">
+                <button class="btn btn-dark" type="submit">
+                    Button
+                </button>
+            </div>
         </form>
+        {% if hello_world_list %} {# 만약 hello_world_output 이 있으면 #}
 
-        {% if hello_world_output %} {# 만약 hello_world_output 이 있으면 #}
-        <h3>{{ hello_world_output }}</h3> {# get method 불러옴 #}
+            {% for hello_world in hello_world_list %}
+                <h3>{{ hello_world.text }}</h3> {# get method 불러옴 #}
+            {% endfor %}
         {% endif %} {# endif 로 막아줘야됨 #}
     </div>
 
