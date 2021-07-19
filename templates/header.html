@@ -7,7 +7,28 @@
     <div class="wolf_header_btn">
         <span>wo1</span>
         <span>wo2</span>
-        <span>wo3</span>
-        <span>wo34</span>
+        {%  if not user.is_authenticated %}
+        <span>
+            <a href="{% url 'accountapp:login' %}">
+                Login
+            </a>
+        </span>
+        <span>
+            <a href="{% url 'accountapp:create' %}">
+                Sign Up
+            </a>
+        </span>
+        {% else %}
+        <span>
+            <a href="{% url 'accountapp:detail' pk=user.pk %}">
+                My page
+            </a>
+        </span>
+        <span>
+            <a href="{% url 'accountapp:logout' %}">
+                Logout
+            </a>
+        </span>
+        {% endif %}
     </div>
 </div>
